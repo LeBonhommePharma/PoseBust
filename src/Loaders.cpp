@@ -1,6 +1,9 @@
 // Loaders.cpp — Clean-room SDF/PDB molecular I/O for PoseBust
 //
-// Apache-2.0. Implemented from first principles; no posebusters/RDKit code.
+// Copyright 2026 Le Bonhomme Pharma
+// SPDX-License-Identifier: Apache-2.0
+//
+// Implemented from first principles; no posebusters/RDKit code.
 #include "posebust/Loaders.h"
 
 #include <algorithm>

@@ -10,7 +10,8 @@
 //   - Provenance integrity (receipts must record real resolved paths, not
 //     shell-mutated strings)
 //
-// Copyright 2026 Le Bonhomme Pharma. Licensed under Apache-2.0.
+// Copyright 2026 Le Bonhomme Pharma
+// SPDX-License-Identifier: Apache-2.0
 #pragma once
 
 #include <cerrno>

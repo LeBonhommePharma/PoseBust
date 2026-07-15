@@ -1,8 +1,11 @@
 # PoseBust
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![SPDX](https://img.shields.io/badge/SPDX-Apache--2.0-green.svg)](https://spdx.org/licenses/Apache-2.0.html)
+
 **Standalone C++26 pose validation** — clean-room NativePoseQC plus an optional bridge to the official [PoseBusters](https://github.com/maabuu/posebusters) Python CLI (`bust`).
 
-Apache-2.0. **No RDKit, no posebusters source, no FlexAIDdS dependency.**
+**Apache License 2.0.** No RDKit, no PoseBusters source, no FlexAIDdS dependency.
 
 Extracted from the FlexAIDdS `LIB/PoseBust` module so docking engines, benchmark harnesses, and packaging pipelines can validate poses without pulling in a full docking codebase.
 
@@ -108,21 +111,50 @@ PoseBust/
 ├── apps/posebust_main.cpp
 ├── tests/              # GoogleTest (self-contained fixtures)
 ├── CMakeLists.txt
-└── LICENSE             # Apache-2.0
+├── LICENSE             # Apache-2.0 full text
+├── NOTICE              # copyright + attribution (Apache §4d)
+├── THIRD_PARTY_LICENSES.md
+├── CONTRIBUTING.md
+└── CITATION.cff
 ```
 
 ## Relationship to FlexAIDdS
 
-- FlexAIDdS still ships a vendored copy under `LIB/PoseBust` for in-tree DatasetRunner.
-- This repo is the **independent** product surface: same clean-room algorithms, namespace `posebust`, no docking engine linkage.
+- [FlexAIDdS](https://github.com/LeBonhommePharma/FlexAIDdS) still ships an in-tree copy under `LIB/PoseBust` (`flexaids::posebust`) for DatasetRunner.
+- **This repo** is the independent product surface: namespace `posebust`, no docking engine linkage.
 - Interop: `load_pdb_flexaid_ligand()` understands FlexAID CONECT / REMARK optimizable residues.
 
-## Licensing & clean-room
+## License
 
-- **This project**: Apache-2.0
-- **PoseBusters** (optional external CLI): BSD — not vendored; invoked only via argv exec when present
-- Algorithms are original; check *keys* match PoseBusters naming for parity. No posebusters/RDKit source is copied.
+**Apache License, Version 2.0** — free for academic and commercial use.
 
-## Author
+| File | Purpose |
+|------|---------|
+| [LICENSE](LICENSE) | Full Apache-2.0 legal text (appendix copyright filled) |
+| [NOTICE](NOTICE) | Copyright holders and attribution required by Apache §4(d) |
+| [THIRD_PARTY_LICENSES.md](THIRD_PARTY_LICENSES.md) | Optional/external tools (PoseBusters BSD, InChI, OpenSSL, GTest) |
+| [docs/licensing/clean-room-policy.md](docs/licensing/clean-room-policy.md) | No GPL / no vendoring PoseBusters or RDKit source |
+| [docs/licensing/APPLYING_THE_LICENSE.md](docs/licensing/APPLYING_THE_LICENSE.md) | File header / SPDX template |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution terms (Apache-2.0 grant) |
+| [CITATION.cff](CITATION.cff) | Citation metadata |
 
-Le Bonhomme Pharma / Louis-Philippe Morency — extracted for independent use from FlexAIDdS.
+```text
+Copyright 2026 Le Bonhomme Pharma
+Copyright 2026 Louis-Philippe Morency
+```
+
+SPDX: `Apache-2.0`
+
+### Clean-room / claim language
+
+- NativePoseQC algorithms are original; check *keys* match PoseBusters naming for report parity only.
+- **No** PoseBusters or RDKit source is copied or linked.
+- Optional `bust` subprocess remains under its own BSD license (not redistributed here).
+- Do **not** report NativePoseQC-only results as official PoseBusters success.
+
+## Author / maintainers
+
+**Le Bonhomme Pharma** — https://github.com/LeBonhommePharma  
+**Louis-Philippe Morency** — project lead  
+
+Originally developed with FlexAIDdS; published here as a standalone package.

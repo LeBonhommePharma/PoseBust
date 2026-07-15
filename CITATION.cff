@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: PoseBust
+message: If you use PoseBust, please cite it using these metadata.
+type: software
+authors:
+  - family-names: Morency
+    given-names: Louis-Philippe
+    affiliation: Le Bonhomme Pharma; Université de Montréal
+  - name: Le Bonhomme Pharma
+repository-code: https://github.com/LeBonhommePharma/PoseBust
+url: https://github.com/LeBonhommePharma/PoseBust
+abstract: >-
+  Standalone C++26 pose validation library providing clean-room NativePoseQC
+  diagnostics and an optional bridge to the official PoseBusters CLI for
+  claim-ready pb_pass gates. Apache-2.0. Independent of FlexAIDdS.
+keywords:
+  - molecular docking
+  - pose validation
+  - PoseBusters
+  - C++26
+  - Apache-2.0
+license: Apache-2.0
+version: 0.1.0
+date-released: "2026-07-15"
