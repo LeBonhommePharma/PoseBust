@@ -199,20 +199,6 @@ void expected_valences(int Z, std::vector<int>& out) {
     }
 }
 
-[[nodiscard]] bool valence_ok(int Z, float bos) noexcept {
-    std::vector<int> vals;
-    expected_valences(Z, vals);
-    if (vals.empty()) return true;
-
-    // Aromatic half-orders + formal-charge slack ±1 (no formal_charge field).
-    // tol = 1.05 covers off-by-one valence for charged species and 1.5 aromatic.
-    constexpr float tol = 1.05f;
-    for (int v : vals) {
-        if (std::fabs(bos - static_cast<float>(v)) <= tol) return true;
-    }
-    return false;
-}
-
 // ---------------------------------------------------------------------------
 // Connectivity (heavy-atom graph)
 // ---------------------------------------------------------------------------

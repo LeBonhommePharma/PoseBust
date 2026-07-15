@@ -58,7 +58,8 @@ enum class PathReject : int {
 /// some filesystems); NUL, CR, LF, and other C0 controls are refused.
 [[nodiscard]] inline PathReject validate_exec_path(std::string_view path) {
     if (path.empty()) return PathReject::Empty;
-    for (unsigned char c : path) {
+    for (char ch : path) {
+        const auto c = static_cast<unsigned char>(ch);
         if (c == '\0') return PathReject::ContainsNul;
         if (c == '\n' || c == '\r') return PathReject::ContainsNewline;
         // C0 controls except TAB (0x09)
