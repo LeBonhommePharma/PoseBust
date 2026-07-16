@@ -1,0 +1,1 @@
+New doc: Formal explanation of pose validation enabling flawless entropic contributions in FlexAID∆S - why ∆S is significantly advantageous with this tool.
