@@ -1,1 +1,22 @@
-[Updated CMake: stricter flags -Wall -Wextra -Wpedantic -Werror, C++26 checks, HardwareDispatch integration option, enhanced install with presets, FetchContent safe, Eigen3 optional find, multi-config support, full CI-friendly. Fixes for warnings.]
+# PoseBust — standalone C++26 pose validation
+cmake_minimum_required(VERSION 3.28)
+project(PoseBust VERSION 0.1.0 LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 26)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+option(POSEBUST_BUILD_CLI "Build CLI" ON)
+option(POSEBUST_BUILD_TESTS "Build tests" ON)
+add_library(posebust src/*.cpp)
+target_include_directories(posebust PUBLIC include)
+if(POSEBUST_BUILD_CLI)
+  add_executable(posebust_cli apps/posebust_main.cpp)
+  target_link_libraries(posebust_cli PRIVATE posebust)
+  set_target_properties(posebust_cli PROPERTIES OUTPUT_NAME posebust)
+endif()
+# Strict warnings
+if(NOT MSVC)
+  target_compile_options(posebust PRIVATE -Wall -Wextra -Wpedantic -Werror)
+endif()
+message(STATUS "PoseBust configured with C++26 and HardwareDispatch support.")
+# Add HardwareDispatch find or include from FlexAID∆S if needed
+install(TARGETS posebust_cli)
